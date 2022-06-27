@@ -2,13 +2,27 @@ package com.mtgdb.mtgdatabase.cards;
 
 import com.mtgdb.mtgdatabase.cards.attributes.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table
 public class Card {
 
+    @Id
+    @SequenceGenerator(
+            name = "card_sequence",
+            sequenceName = "card_sequence",
+            allocationSize = 1
+    )
 
-    private int serial;
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "card_sequence"
+    )
+
+    private Long id;
     private String name;
     private List<Cost> cost;
     private int cmc;
@@ -53,7 +67,9 @@ public class Card {
     }
 
 
-
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -103,7 +119,7 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
-                "serial=" + serial +
+                ",\n id='" + id + '\'' +
                 ",\n name='" + name + '\'' +
                 ",\n cost=" + cost +
                 ",\n cmc=" + cmc +
