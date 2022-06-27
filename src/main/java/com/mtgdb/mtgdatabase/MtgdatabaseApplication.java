@@ -28,6 +28,7 @@ public class MtgdatabaseApplication {
 		);
 		System.out.println(card.toString());
 
+
 		SpringApplication.run(MtgdatabaseApplication.class, args);
 	}
 

@@ -1,13 +1,17 @@
 package com.mtgdb.mtgdatabase.cards.attributes;
 
 public enum Cost {
-    X (0), ONE (1), TWO (2), THREE (3), FOUR (4),
-    FIVE (5), SIX (6), NONE (0), W (1), U (1),
-    B (1), R (1), G (1), ZERO (0), ;
+    X (0, "none"), ONE (1, "none"), TWO (2, "none"), THREE (3, "none"), FOUR (4, "none"),
+    FIVE (5, "none"), SIX (6, "none"), NONE (0, "none"), W (1, "white"), U (1, "blue"),
+    B (1, "black"), R (1, "red"), G (1, "green"), ZERO (0, "none"), ;
 
     public final int manaAsValue;
+    public final String colorOfMana;
 
-    Cost(int manaAsValue) {
-        this.manaAsValue =manaAsValue;
+
+    Cost(int manaAsValue, String colorOfMana) {
+        this.manaAsValue = manaAsValue;
+        this.colorOfMana = colorOfMana;
     }
+
 }

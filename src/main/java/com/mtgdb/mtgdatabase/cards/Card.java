@@ -1,10 +1,8 @@
 package com.mtgdb.mtgdatabase.cards;
 
 import com.mtgdb.mtgdatabase.cards.attributes.*;
-import net.bytebuddy.implementation.bind.annotation.Super;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 public class Card {
@@ -20,7 +18,7 @@ public class Card {
     private String textbox;
     private int power;
     private int thoughness;
-    private List<Color> color;
+    private ArrayList<String> color = new ArrayList<>();
 
     public Card(String name, List<Cost> cost, List<SuperType> superType, List<Type> type, List<SubType> subType,
                 String textbox, int power, int thoughness) {
@@ -33,9 +31,25 @@ public class Card {
         this.power = power;
         this.thoughness = thoughness;
 
-        for(int i = 0; i<cost.size(); i++){
-            cmc+=cost.get(i).manaAsValue;
-        };
+
+
+        //calculates the cmc from the user's input.
+        for (Cost symbol : cost) {
+            cmc+=symbol.manaAsValue;
+        }
+
+
+
+        //calculates color from cost.
+        for (Cost costColor : cost) {
+            if(!costColor.colorOfMana.equals("none")){
+                color.add(costColor.colorOfMana);
+            }
+        }
+        if(color.size() == 0){
+            color.add("colorless");
+        }
+
     }
 
 
@@ -45,17 +59,11 @@ public class Card {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public List<Cost> getCost() {
         return cost;
     }
 
-    public void setCost(List<Cost> cost) {
-        this.cost = cost;
-    }
 
     public int getCmc() {
         return cmc;
@@ -66,56 +74,29 @@ public class Card {
         return superType;
     }
 
-    public void setSuperType(List<SuperType> superType) {
-        this.superType = superType;
-    }
 
     public List<Type> getType() {
         return type;
-    }
-
-    public void setType(List<Type> type) {
-        this.type = type;
     }
 
     public List<SubType> getSubType() {
         return subType;
     }
 
-    public void setSubType(List<SubType> subType) {
-        this.subType = subType;
-    }
-
     public String getTextbox() {
         return textbox;
-    }
-
-    public void setTextbox(String textbox) {
-        this.textbox = textbox;
     }
 
     public int getPower() {
         return power;
     }
 
-    public void setPower(int power) {
-        this.power = power;
-    }
-
     public int getThoughness() {
         return thoughness;
     }
 
-    public void setThoughness(int thoughness) {
-        this.thoughness = thoughness;
-    }
-
-    public List<Color> getColor() {
+    public List<String> getColor() {
         return color;
-    }
-
-    public void setColor(List<Color> color) {
-        this.color = color;
     }
 
 
