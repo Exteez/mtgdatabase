@@ -14,6 +14,7 @@ public enum SubType {
     //ARTIFACT subtypes
     EQUIPMENT,
 
+    NONE
 
 
       /*
