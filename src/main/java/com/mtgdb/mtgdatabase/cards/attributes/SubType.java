@@ -15,17 +15,4 @@ public enum SubType {
     EQUIPMENT,
 
     NONE
-
-
-      /*
-
-       ez így lehet, h  enum within an enum és a card constructor látni fogja?
-
-
-       enum RelatedType{
-            LAND, CREATURE, ARTIFACT, ENCHANTMENT, PLANESWALKER, INSTANT, SORCERY, TRIBE
-        }
-        */
-
-
 }

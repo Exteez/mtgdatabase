@@ -2,7 +2,6 @@ package com.mtgdb.mtgdatabase.cards;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -16,11 +15,9 @@ public class CardService {
     public CardService(CardRepository cardRepository){
         this.cardRepository = cardRepository;
     }
-
     public List<Card> getCards(){
         return cardRepository.findAll();
     }
-
     public void addNewCard(Card card){
         Optional<Card> cardOptional = cardRepository.findCardById(card.getId());
         if(cardOptional.isPresent()){

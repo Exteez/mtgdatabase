@@ -16,9 +16,7 @@ public class CardConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(CardRepository repository){
-
         return args -> {
-
             Card card = new Card(
                     "Kess, Dissident Mage",
                     List.of(Cost.ONE, Cost.U, Cost.B, Cost.R),
@@ -30,11 +28,9 @@ public class CardConfig {
                     3,
                     4
             );
-
             repository.saveAll(
                     List.of(card)
             );
-
         };
     }
 

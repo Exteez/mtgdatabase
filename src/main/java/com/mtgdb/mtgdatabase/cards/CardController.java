@@ -38,5 +38,4 @@ public class CardController {
             @RequestParam(required = false) String name) {
                 cardService.updateCard(cardId, name);
     }
-
 }
