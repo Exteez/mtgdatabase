@@ -2,6 +2,7 @@ package com.mtgdb.mtgdatabase.cards;
 
 import com.mtgdb.mtgdatabase.cards.attributes.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table
 @Getter
+@Setter
 public class Card {
     @Id
     @Column(name = "id_number")
@@ -77,13 +79,9 @@ public class Card {
         if(color.size() == 0){
             color.add("colorless");
         }
-        for (int i = 0; i < cost.size(); i++) {
-            if(!Objects.equals(cost.get(i).colorOfMana, "none") && !colorInString.contains(cost.get(i).colorOfMana)){
-                if(colorInString.isBlank()){
-                    colorInString += cost.get(i).colorOfMana;
-                }else{
-                    colorInString +=", "+ cost.get(i).colorOfMana;
-                }
+        for (Cost value : cost) {
+            if (!Objects.equals(value.colorOfMana, "none") && !colorInString.contains(value.colorOfMana)) {
+                colorInString = String.join(", ", value.colorOfMana);
             }
         }
     }
