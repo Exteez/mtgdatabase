@@ -9,10 +9,17 @@ public enum SubType {
     SPECTER, SPIDER, TREEFOLK, TROLL, UNICORN, VAMPIRE, WALL, WARRIOR, WIZARD, WOLF, WRAITH, WURM, ZOMBIE,
 
     //ENCHANTMENT subtypes
-    AURA,
+    AURA, CARTOUCHE,
 
     //ARTIFACT subtypes
     EQUIPMENT,
 
+    //BASIC LAND subtypes
+    PLAINS, ISLAND, SWAMP, MOUNTAIN, FOREST,
+
+    //INSTANT AND SORCERY subtypes
+    ARCANE, ADVENTURE,
+
+    //if the card has no subtypes
     NONE
 }

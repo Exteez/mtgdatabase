@@ -18,6 +18,7 @@ public class CardService {
     public List<Card> getCards(){
         return cardRepository.findAll();
     }
+
     public void addNewCard(Card card){
         Optional<Card> cardOptional = cardRepository.findCardById(card.getId());
         if(cardOptional.isPresent()){

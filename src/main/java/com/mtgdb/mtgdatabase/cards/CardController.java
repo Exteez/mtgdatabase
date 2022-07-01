@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping(path = "api/v1/card")
 public class CardController {
 
+    @Autowired
     private final CardService cardService;
 
     @Autowired
@@ -37,5 +38,6 @@ public class CardController {
             @PathVariable("cardId") Long cardId,
             @RequestParam(required = false) String name) {
                 cardService.updateCard(cardId, name);
+
     }
 }
