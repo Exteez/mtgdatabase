@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table
@@ -24,28 +25,28 @@ public class Card {
     private int cmc;
 
     @Transient
-    private List<SuperType> superType;
+    private Set<SuperType> superType;
     private String superTypeInString;
 
     @Transient
-    private List<Type> type;
+    private Set<Type> type;
     private String typeInString;
 
     @Transient
-    private List<SubType> subType;
+    private Set<SubType> subType;
     private String subTypeInString;
     private String textbox;
     private int power;
     private int thoughness;
 
     @Transient //will not be a column in the database
-    private ArrayList<String> color = new ArrayList<>();
+    private ArrayList<String> color;
     private String colorInString;
 
 
 
 
-    public Card(String name, List<Cost> cost, List<SuperType> superType, List<Type> type, List<SubType> subType,
+    public Card(String name, List<Cost> cost, Set<SuperType> superType, Set<Type> type, Set<SubType> subType,
                 String textbox, int power, int thoughness) {
         this.name = name;
         this.cost = cost;
@@ -66,7 +67,7 @@ public class Card {
 
     }
 
-    private void calculateTypes(List<SuperType> superType, List<Type> type, List<SubType> subType) {
+    private void calculateTypes(Set<SuperType> superType, Set<Type> type, Set<SubType> subType) {
         superTypeInString = String.join(", ", superType.toString());
         typeInString = String.join(", ", type.toString());
         subTypeInString = String.join(", ", subType.toString());
